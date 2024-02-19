@@ -20,6 +20,8 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [ContactController::class, 'displayUser']) ->name('home');
 
 Route::get('/contact/{id}', [ContactController::class, 'showUser']) ->name('contact.show_user');
+Route::get('/contact/{id}/edit', [ContactController::class, 'showEdit']) ->name('contact.edit');
+Route::put('/contact/{id}', [ContactController::class, 'update']) ->name('contact.update');
 
 
 Route::post('/post', [ContactController::class, 'addUser']) ->name('contact.add');

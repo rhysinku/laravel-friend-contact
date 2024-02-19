@@ -1,6 +1,10 @@
 @extends('layout.layout')
-@include('includes.AddContact')
+
  @section('content')
+
+ @include('includes.AddContact')
+ @include('contact.search')
+
  <div>
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
@@ -23,8 +27,8 @@
     <div class="flex justify-center gap-x-3">
         <a class=" text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-950 rounded text-lg" href="{{ route('contact.show_user', $contact->id) }}">View</a>
       
-        <form> 
-        <button class="  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-950 rounded text-lg">Edit</button>
+       
+        <a class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-950 rounded text-lg" href="{{ route('contact.edit', $contact->id) }}">Edit</a>
       </form>
       <form action="{{ route('contact.destroy', $contact->id) }}" method="POST">
         @csrf
