@@ -10,11 +10,11 @@
         <span class="mb-3 block text-gray-600"> Phone: <h3 class="text-gray-950">  {{$contactShow->phone}}</h3></span>
         <span class="mb-3 block text-gray-600"> Company: <h4 class="text-gray-950">  {{$contactShow->company}}</h4></span>
         <div class="flex justify-center">
-          <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-950 rounded text-lg">Edit</button>
+          <a class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-950 rounded text-lg" href="{{ route('contact.edit' , $contactShow->id) }}">Edit</a>
             <form action="{{ route('contact.destroy', $contactShow->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button class="ml-4 inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-950 rounded text-lg">Delete</button>
+                <button class="ml-4 inline-flex text-white bg-r1-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-950 rounded text-lg">Delete</button>
             </form>
         </div>
       </div>

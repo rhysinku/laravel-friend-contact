@@ -8,22 +8,27 @@ use  App\Models\Contact;
 
 class ContactController extends Controller
 {
-    //
+
     public function displayUser(){
 
-        $data = Contact::orderBy('updated_at' ,'desc');  
-
+        $user = auth()->user();
+        // $data = Contact::orderBy('updated_at' ,'desc');  
+         $data = $user->contacts()->orderByDesc('updated_at')->paginate(6);  
         if(request()->has('search')){
             $search = request()->search;
             $data = Contact::where('name', 'LIKE', '%'.$search.'%');
         }
  
-        $newData = $data->paginate(6);
+        $newData = $data;
         // $newContact = new Contact();
         // $newContact->name = "Rhysin";
         // $newContact->save();
+        
+        //  dd($data);
 
-        return view('dashboard.index',['contacts'=> $newData]) ;
+        
+
+     return view('dashboard.index',['contacts'=> $newData]) ;
     }
 
 
@@ -59,8 +64,6 @@ class ContactController extends Controller
     }
 
     
-  
-
     public function addUser(Request $request){
 
         $data = $request->validate([
@@ -69,11 +72,11 @@ class ContactController extends Controller
             'phone' =>'required',
             'email' =>'required|email',
         ]);
-
-        $newContact = Contact::create($data);
-
-        // dd($data);
-        return redirect()->route('home');
+        $user = auth()->user();
+        $data['user_id']=$user->id;
+         $newContact = Contact::create($data);
+        //  dd( $newContact );
+         return redirect()->route('home');
       
     }
 

@@ -2,11 +2,13 @@
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a class="text-xl" href="{{ route('home') }}">Tailblocks</a>
       </a>
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a class="mr-5 hover:text-gray-900" href="/login">Login</a>
-        <a class="mr-5 hover:text-gray-900" href="/register">Register</a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center mx-5">
+      @guest
+      <a class="mr-5 hover:text-gray-900" href="/login">Login</a>
+      <a class="mr-5 hover:text-gray-900" href="/register">Register</a>
+      @endguest
        @auth
-       <h2>{{ Auth::user()->name }}</h2>
+       <h2>Hi there, {{ Auth::user()->name }} !</h2>
        @endauth
       </nav>
      @auth
