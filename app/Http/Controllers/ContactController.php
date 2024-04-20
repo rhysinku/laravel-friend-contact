@@ -21,6 +21,7 @@ class ContactController extends Controller
  
         // $newData = $data;
     //  return view('dashboard.index',['contacts'=> $newData]) ;
+    if (auth()->check()) {
         $user = auth()->user();
         $data = $user->contacts()->orderByDesc('updated_at');  
         
@@ -38,7 +39,8 @@ class ContactController extends Controller
 
         $newData = $data->paginate(6);
         return view('dashboard.index',['contacts'=> $newData]) ;
-     
+    }
+    return view('dashboard.index' , ['contacts' => []]);
     
     }
 
