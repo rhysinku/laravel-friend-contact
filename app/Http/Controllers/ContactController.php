@@ -47,6 +47,12 @@ class ContactController extends Controller
 
     public function showUser($id){
         $contactUser = Contact::find($id);
+
+
+        if (!$contactUser) {
+            abort(404);
+        }
+
         return view('contact.show' ,['contactShow' => $contactUser]);
     
     }
