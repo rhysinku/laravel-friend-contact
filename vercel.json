@@ -13,7 +13,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://yourprojectdomain.com",
+        "APP_KEY": "base64:17mss5We3rWBOzyy+ZioM+Qa4eivOT+vLC3buxhq0+k=",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
